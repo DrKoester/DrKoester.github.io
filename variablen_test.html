@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Test</title>
+    <meta charset="utf-8">
+</head>
+<body>
+	
+	<h1>Clicker Game</h1>
+    
+	<input id="button" type="submit" name="button" value="CLICK HERE"/>
+    <p>Clicks: <span id="clicks">0</span></p>
+	
+	
+	
+	<table>
+		<tr>
+			<td>Click Power: <span id="click_power">1</span></td>
+			<td>Upgrading Price: <span id="click_power_prize">10</span></td>
+			<td><input id="click_power_button" type="submit" name="click_power_button" value="UPGRADE"/></td>
+		</tr>
+		<tr>
+			<td>Clickers: <span id="clickers">0</span></td>
+			<td>Next Clicker Price: <span id="clickers_prize">30</span></td>
+			<td><input id="clickerbutton" type="submit" name="clicker_button" value="BUY CLICKER"/></td>
+		</tr>
+		<tr>
+			<td>Clicker Power: <span id="clickers_power">1</span></td>
+			<td>Upgrading Clickers: <span id="clickers_power_prize">300</span></</td>
+			<td><input id="clickers_power_button" type="submit" name="clicker_power_button" value="UPGRADE CLICKERS"/></td>
+		</tr>
+		<tr>
+			<td>Clickey Mouses: <span id="clickey_mouses">0</span></td>
+			<td>Next Clickey Mouse Price: <span id="clickey_mouses_prize">6000</span></td>
+			<td><input id="clickey_mouses_button" type="submit" name="clickey_mouse_button" value="BUY CLICKEY MOUSE"/></td>
+		</tr>
+		<tr>
+			<td>Clickey Mouse Power: <span id="clickey_mouses_power">1</span></td>
+			<td>Upgrading Clickey Mouses: <span id="clickey_mouses_power_prize">60000</span></td>
+			<td><input id="clickey_mouses_power_button" type="submit" name="clickey_mouse_power_button" value="UPGRADE CLICKEY MOUSES"/></td>
+		</tr>
+		<tr>
+			<td>Books with a bad Clickhanger: <span id="books">0</span></td>
+			<td>Next Clickhanger Price: <span id="books_prize">30000</span></td>
+			<td><input id="books_button" type="submit" name="book_button" value="BUY A BOOK"/></td>
+		</tr>
+		<tr>
+			<td>Book Power: <span id="books_power">1</span></td>
+			<td>Upgrading Books: <span id="books_power_prize">300000</span></td>
+			<td><input id="books_power_button" type="submit" name="book_power_button" value="UPGRADE BOOKS"/></td>
+		</tr>
+	</table>
+	
+
+    <script>
+        var clicks = 0;
+		var click_power = 1;
+		var click_power_prize = 10;
+		
+		var clickers = 0;
+		var clickers_prize = 30;
+		var clickers_power = 1;
+		var clickers_power_prize = 300;
+		
+		var clickey_mouses = 0;
+		var clickey_mouses_prize = 6000;
+		var clickey_mouses_power = 1;
+		var clickey_mouses_power_prize = 60000;
+		
+		var books = 0;
+		var books_prize = 30000;
+		var books_power = 1;
+		var books_power_prize = 300000;
+		
+        document.getElementById('button').addEventListener("click", function() {
+            clicks += click_power
+			console.log(clicks.toFixed(1))
+        });
+		
+		document.getElementById('clickerbutton').addEventListener("click", function() {
+			buy("clickers","clickers_prize",1.2)
+		})
+		
+		document.getElementById('click_power_button').addEventListener("click", function() {
+			buy("click_power","click_power_prize",10)
+		})
+		
+		document.getElementById('clickey_mouses_button').addEventListener("click", function() {
+			buy("clickey_mouses", "clickey_mouses_prize",1.3)
+		})
+		
+		document.getElementById('books_button').addEventListener("click", function() {
+			buy("books", "books_prize",1.4)
+		})
+		
+		document.getElementById('clickers_power_button').addEventListener("click", function() {
+			buy("clickers_power", "clickers_power_prize",3)
+		})
+		
+		document.getElementById('clickey_mouses_power_button').addEventListener("click", function() {
+			buy("clickey_mouses_power", "clickey_mouses_power_prize",3)
+		})
+		
+		document.getElementById('books_power_button').addEventListener("click", function() {
+			buy("books_power", "books_power_prize",1.4)
+		})
+		
+		
+		setInterval(function() {
+			let clicks_to_update = 0
+			clicks_to_update = clickers * 0.1 * clickers_power + clickey_mouses * 2 * clickey_mouses_power + books * 8 * books_power
+            clicks += clicks_to_update *0.05;
+			updateUI()
+			updateButtons()
+        }, 50);
+		
+		
+		function updateUI() {
+            document.getElementById('clicks').innerText = clicks.toFixed(1);
+            document.getElementById('clickers').innerText = clickers;
+            document.getElementById('clickers_prize').innerText = clickers_prize.toFixed(1);
+			document.getElementById('clickey_mouses').innerText = clickey_mouses;
+            document.getElementById('clickey_mouses_prize').innerText = clickey_mouses_prize.toFixed(1);
+			document.getElementById('books').innerText = books;
+            document.getElementById('books_prize').innerText = books_prize.toFixed(1);
+			document.getElementById('click_power').innerText = click_power;
+            document.getElementById('click_power_prize').innerText = click_power_prize.toFixed(1);
+			document.getElementById('clickers_power_prize').innerText = clickers_power_prize.toFixed(1);
+			document.getElementById('clickers_power').innerText = clickers_power.toFixed(1);
+			document.getElementById('clickey_mouses_power_prize').innerText = clickey_mouses_power_prize.toFixed(1);
+			document.getElementById('clickey_mouses_power').innerText = clickey_mouses_power.toFixed(1);
+			document.getElementById('books_power_prize').innerText = books_power_prize.toFixed(1);
+			document.getElementById('books_power').innerText = books_power.toFixed(1);
+		}
+		
+		
+		function buy(what, prize, prize_increase) {
+			if (clicks >= window[prize])
+			{
+				window[what] += 1
+				clicks -= window[prize]
+				window[prize] *= prize_increase
+				
+				updateUI()
+				updateButtons()
+			}
+		}
+		
+		
+		function updateButtons() {
+			document.getElementById('click_power_button').disabled = clicks < click_power_prize;
+			document.getElementById('clickerbutton').disabled = clicks < clickers_prize;
+			document.getElementById('clickers_power_button').disabled = clicks < clickers_power_prize;
+			document.getElementById('clickey_mouses_button').disabled = clicks < clickey_mouses_prize;
+			document.getElementById('clickey_mouses_power_button').disabled = clicks < clickey_mouses_power_prize;
+			document.getElementById('books_button').disabled = clicks < books_prize;
+			document.getElementById('books_power_button').disabled = clicks < books_power_prize;
+		}
+
+
+
+		
+		
+    </script>
+</body>
+</html>
