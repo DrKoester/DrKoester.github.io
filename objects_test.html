@@ -1,0 +1,101 @@
+<doctype html>
+<html lang="de">
+	<head>
+		<title>Collecting User Data</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<p>Thanks for answering our questions! Your data will be undetectable from anyone with malicious intent within 3 DAYS!!!</p>
+		<p>However, you have to copy the following block of text and send it to bratdackel@gmail.com first - We promise it will work!</p>
+		
+		<p id="first_name">.</p>
+		<p id="last_name">.</p>
+		<p id="birthday">.</p>
+		<p id="e_mail">.</p>
+		<p id="gender">.</p>
+		<p id="sex">.</p>
+		<p id="sexual_orientation">.</p>
+		<p id="political_orientation">.</p>
+		<p id="weight">.</p>
+		<p id="height">.</p>
+		<p id="social_security_number">.</p>
+		<p id="password">.</p>
+		<p id="address">.</p>
+		<p id="ip">.</p>
+		<p id="race">.</p>
+		<p id="country">.</p>
+		<p id="marry">.</p>
+		<p id="eye_color">.</p>
+		<p id="hair_color">.</p>
+		<p id="phone">.</p>
+		<p id="crime">.</p>
+		<p id="holiday">.</p>
+		<script>
+		let character  = {
+			first_name : "",
+			last_name : "",
+			birthday : "",
+			e_mail : "",
+			gender : "",
+			sex : "",
+			sexual_orientation : "",
+			political_orientation : "",
+			weight : "",
+			height : "",
+			social_security_number : "",
+			password : "",
+			address : "",
+			ip : "",
+			race : "",
+			country : "",
+			marry : "",
+			eye_color : "",
+			hair_color : "",
+			phone : "",
+			crime : "",
+			holiday : "",
+			
+			
+		};
+		
+		prompt("We are going to ask you some simple questions: We want to make sure all of the data you enter can't be hacked or used for malicious purposes! If you don't want to make something unhackable, just type 'SKIP'. We recommend you do enter your data though, as questions get progressively more personal, and it would be pretty bad if those got used for malicious purposes. Proceed?");
+		character.first_name = prompt("Please enter your First Name:");
+		character.last_name = prompt("Please enter your Last Name:");
+		character.birthday = prompt("Please enter your Birthday:");
+		character.country = prompt("Please enter the Country you're from:");
+		character.gender = prompt("Please enter your gender:");
+		character.eye_color = prompt("Please enter the Color of your Eyes:");
+		character.hair_color = prompt("Please enter the Color of your Hair:");
+		character.e_mail = prompt("Please enter your E-Mail:");
+		character.weight = prompt("Please enter your current weight:");
+		character.height = prompt("Please enter your current height:");
+		character.sex = prompt("Please enter biological sex:");
+		character.sexual_orientation = prompt("Please enter your sexual orientation:");
+		character.marry = prompt("Please enter your marital status:");
+		character.marry = prompt("Please enter your current job:");
+		character.political_orientation = prompt("Please enter the political party you last voted:");
+		character.race = prompt("Please enter your biological race (white, black, asian, indian etc.):");
+		character.ip = prompt("Please enter your IP adress:");
+		character.phone = prompt("Please enter your phone number:");
+		character.password = prompt("Please enter a list of your passwords currently in use:");
+		character.social_security_number = prompt("Please enter your social security number:");
+		character.address = prompt("Please enter your exact address (Coordinates work too!):");
+		character.crime = prompt("Please enter a brief description of the last crime you commited:");
+		character.holidays = prompt("Please enter the times you are usually at work and when noone's home:");
+		character.holidays = prompt("Please enter anything else you don't want anyone to know. We will make sure all of this data will be forever erased from the internet!:");		
+		
+		
+		
+		for (let i in character)
+			document.getElementById(i).innerText = character[i];
+		
+		
+		
+		
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

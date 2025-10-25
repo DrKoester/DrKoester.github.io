@@ -1,0 +1,70 @@
+h1, h2, h3 {
+   font-family: Helvetica, sans-serif;
+}
+
+p, ul, ol, li, th, tr, td {
+   font-family: Roboto, sans-serif;
+}
+
+.infobox {
+  font-family: Arial, sans-serif;
+  border: 1px solid #a2a9b1;
+  background-color: #f8f9fa;
+  border-collapse: collapse;
+  width: 300px;
+  font-size: 90%;
+  line-height: 1.5em;
+}
+
+.infobox caption {
+  font-weight: bold;
+  font-size: 1.1em;
+  background-color: #dbe2e8;
+  border: 1px solid #a2a9b1;
+  border-bottom: none;
+  padding: 0.4em;
+  text-align: center;
+}
+
+.infobox th,
+.infobox td {
+  border: 1px solid #a2a9b1;
+  padding: 4px 6px;
+  vertical-align: top;
+}
+
+.infobox th {
+  background-color: #eaecf0;
+  text-align: left;
+  font-weight: bold;
+  width: 40%;
+}
+
+.infobox td {
+  background-color: #ffffff;
+}
+
+.infobox tr:nth-child(even) td {
+  background-color: #f8f9fa;
+}
+
+.infobox img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.infobox .title {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: #dbe2e8;
+  padding: 6px;
+}
+
+.comic_body {
+	background-color: lightblue;
+	padding-left: 100px;
+	padding-right: 100px;
+}

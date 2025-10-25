@@ -3,59 +3,77 @@
 <head>
     <title>Test</title>
     <meta charset="utf-8">
+	<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="clicker">
 	
-	<h1>Clicker Game</h1>
+	<h1 id="main_text">I need to punch this dude and take his money!</h1>
+	<audio id="audio" src="audio/homeless.mp3"></audio>
     
-	<input id="button" type="submit" name="button" value="CLICK HERE"/>
-    <p>Clicks: <span id="clicks">0</span></p>
+	<p>Dollars: <span id="clicks">0.0</span></p>
+	<img src="images/homeless.png" class="main_button" id="button" type="submit" name="button">
+	<p id="scream">Aaaah, what a nice day to be homeless...</p>
 	
 	
 	
 	<table>
 		<tr>
-			<td>Click Power: <span id="click_power">1</span></td>
-			<td>Upgrading Price: <span id="click_power_prize">10</span></td>
-			<td><input id="click_power_button" type="submit" name="click_power_button" value="UPGRADE"/></td>
+			<td>Punch Power: <span id="click_power">1</span></td>
+			<td>Go to the gym to practice punching: <span id="click_power_prize">10.0</span></td>
+			<td><input id="click_power_button" type="submit" name="click_power_button" value="PRACTICE"/></td>
 		</tr>
 		<tr>
-			<td>Clickers: <span id="clickers">0</span></td>
-			<td>Next Clicker Price: <span id="clickers_prize">30</span></td>
-			<td><input id="clickerbutton" type="submit" name="clicker_button" value="BUY CLICKER"/></td>
+			<td>Hitmen: <span id="clickers">0</span></td>
+			<td>Hire a hitman to help you punch homeless dudes: <span id="clickers_prize">30.0</span></td>
+			<td><input id="clickerbutton" type="submit" name="clicker_button" value="HIRE"/></td>
 		</tr>
 		<tr>
-			<td>Clicker Power: <span id="clickers_power">1</span></td>
-			<td>Upgrading Clickers: <span id="clickers_power_prize">300</span></</td>
-			<td><input id="clickers_power_button" type="submit" name="clicker_power_button" value="UPGRADE CLICKERS"/></td>
+			<td>Hitmen Power: <span id="clickers_power">1</span></td>
+			<td>Take your hitmen to the gym: <span id="clickers_power_prize">300.0</span></</td>
+			<td><input id="clickers_power_button" type="submit" name="clicker_power_button" value="UPGRADE"/></td>
 		</tr>
 		<tr>
-			<td>Clickey Mouses: <span id="clickey_mouses">0</span></td>
-			<td>Next Clickey Mouse Price: <span id="clickey_mouses_prize">6000</span></td>
-			<td><input id="clickey_mouses_button" type="submit" name="clickey_mouse_button" value="BUY CLICKEY MOUSE"/></td>
+			<td>Metal detectors: <span id="clickey_mouses">0</span></td>
+			<td>Order a metal detector from Amazon: <span id="clickey_mouses_prize">6000.0</span></td>
+			<td><input id="clickey_mouses_button" type="submit" name="clickey_mouse_button" value="ORDER"/></td>
 		</tr>
 		<tr>
-			<td>Clickey Mouse Power: <span id="clickey_mouses_power">1</span></td>
-			<td>Upgrading Clickey Mouses: <span id="clickey_mouses_power_prize">60000</span></td>
-			<td><input id="clickey_mouses_power_button" type="submit" name="clickey_mouse_power_button" value="UPGRADE CLICKEY MOUSES"/></td>
+			<td>Metal detector sensitivity: <span id="clickey_mouses_power">1</span></td>
+			<td>Make your detectors more sensitive to the money of homeless dudes: <span id="clickey_mouses_power_prize">60000.0</span></td>
+			<td><input id="clickey_mouses_power_button" type="submit" name="clickey_mouse_power_button" value="CHANGE SENSITIVITY"/></td>
 		</tr>
 		<tr>
-			<td>Books with a bad Clickhanger: <span id="books">0</span></td>
-			<td>Next Clickhanger Price: <span id="books_prize">30000</span></td>
-			<td><input id="books_button" type="submit" name="book_button" value="BUY A BOOK"/></td>
+			<td>Books written: <span id="books">0</span></td>
+			<td>Write a book about how you became rich: <span id="books_prize">30000.0</span></td>
+			<td><input id="books_button" type="submit" name="book_button" value="WRITE"/></td>
 		</tr>
 		<tr>
-			<td>Book Power: <span id="books_power">1</span></td>
-			<td>Upgrading Books: <span id="books_power_prize">300000</span></td>
-			<td><input id="books_power_button" type="submit" name="book_power_button" value="UPGRADE BOOKS"/></td>
+			<td>Book ratings: <span id="books_power">1</span></td>
+			<td>Buy your own books on Amazon to trick the algorithm: <span id="books_power_prize">300000.0</span></td>
+			<td><input id="books_power_button" type="submit" name="book_power_button" value="BUY"/></td>
+		</tr>
+		<tr>
+			<td>Cartels owned: <span id="cartels">0</span></td>
+			<td>Buy a Cartel in Mexico: <span id="cartels_prize">90000.0</span></td>
+			<td><input id="cartels_button" type="submit" name="cartels_button" value="BUY"/></td>
+		</tr>
+		<tr>
+			<td>Cartel Power: <span id="cartels_power">1</span></td>
+			<td>Sell harder drugs: <span id="cartels_power_prize">900000.0</span></td>
+			<td><input id="cartels_power_button" type="submit" name="cartels_power_button" value="HARDER DRUGS"/></td>
 		</tr>
 	</table>
 	
 
     <script>
+		window.alert("Hey, look at this homeless dude. I need to punch him and take his money!");
         var clicks = 0;
 		var click_power = 1;
 		var click_power_prize = 10;
+		var click_modifier = 1;
+		
+		var redness = 0;
+		var screamable = true;
 		
 		var clickers = 0;
 		var clickers_prize = 30;
@@ -72,9 +90,20 @@
 		var books_power = 1;
 		var books_power_prize = 300000;
 		
+		var cartels = 0;
+		var cartels_prize = 90000;
+		var cartels_power = 1;
+		var cartels_power_prize = 900000;
+		
+		
+		var lucky_in_use = false;
+		
         document.getElementById('button').addEventListener("click", function() {
-            clicks += click_power
+            clicks += click_power * click_modifier
 			console.log(clicks.toFixed(1))
+			scream()
+			turn_red()
+			play()
         });
 		
 		document.getElementById('clickerbutton').addEventListener("click", function() {
@@ -93,6 +122,10 @@
 			buy("books", "books_prize",1.4)
 		})
 		
+		document.getElementById('cartels_button').addEventListener("click", function() {
+			buy("cartels", "cartels_prize",1.2)
+		})
+		
 		document.getElementById('clickers_power_button').addEventListener("click", function() {
 			buy("clickers_power", "clickers_power_prize",3)
 		})
@@ -102,16 +135,21 @@
 		})
 		
 		document.getElementById('books_power_button').addEventListener("click", function() {
-			buy("books_power", "books_power_prize",1.4)
+			buy("books_power", "books_power_prize",3)
+		})
+		
+		document.getElementById('cartels_power_button').addEventListener("click", function() {
+			buy("cartels_power", "cartels_power_prize",2)
 		})
 		
 		
 		setInterval(function() {
 			let clicks_to_update = 0
-			clicks_to_update = clickers * 0.1 * clickers_power + clickey_mouses * 2 * clickey_mouses_power + books * 8 * books_power
+			clicks_to_update = clickers * 0.1 * clickers_power + clickey_mouses * 2 * clickey_mouses_power + books * 8 * books_power + cartels * 7 * cartels_power
             clicks += clicks_to_update *0.05;
 			updateUI()
 			updateButtons()
+			lucky_number()
         }, 50);
 		
 		
@@ -123,14 +161,16 @@
             document.getElementById('clickey_mouses_prize').innerText = clickey_mouses_prize.toFixed(1);
 			document.getElementById('books').innerText = books;
             document.getElementById('books_prize').innerText = books_prize.toFixed(1);
+			document.getElementById('cartels').innerText = cartels;
+            document.getElementById('cartels_prize').innerText = cartels_prize.toFixed(1);
 			document.getElementById('click_power').innerText = click_power;
             document.getElementById('click_power_prize').innerText = click_power_prize.toFixed(1);
 			document.getElementById('clickers_power_prize').innerText = clickers_power_prize.toFixed(1);
 			document.getElementById('clickers_power').innerText = clickers_power.toFixed(1);
 			document.getElementById('clickey_mouses_power_prize').innerText = clickey_mouses_power_prize.toFixed(1);
 			document.getElementById('clickey_mouses_power').innerText = clickey_mouses_power.toFixed(1);
-			document.getElementById('books_power_prize').innerText = books_power_prize.toFixed(1);
-			document.getElementById('books_power').innerText = books_power.toFixed(1);
+			document.getElementById('cartels_power_prize').innerText = cartels_power_prize.toFixed(1);
+			document.getElementById('cartels_power').innerText = cartels_power.toFixed(1);
 		}
 		
 		
@@ -143,6 +183,7 @@
 				
 				updateUI()
 				updateButtons()
+				updateBG()
 			}
 		}
 		
@@ -155,12 +196,116 @@
 			document.getElementById('clickey_mouses_power_button').disabled = clicks < clickey_mouses_power_prize;
 			document.getElementById('books_button').disabled = clicks < books_prize;
 			document.getElementById('books_power_button').disabled = clicks < books_power_prize;
+			document.getElementById('cartels_button').disabled = clicks < cartels_prize;
+			document.getElementById('cartels_power_button').disabled = clicks < cartels_power_prize;
 		}
+		
+		function updateBG() {
+			if (lucky_in_use == false) {
+				let r = 255 - clickers * 4;
+				let g = 255 - clickey_mouses * 4;
+				let b = 255 - books * 4;
 
+				r = Math.max(0, Math.min(255, r));
+				g = Math.max(0, Math.min(255, g));
+				b = Math.max(0, Math.min(255, b));
 
-
+				document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+			}
+		}
 		
 		
+		async function lucky_number() {
+			if (Math.random() < 0.001) {
+				if  (lucky_in_use == false) {
+					document.getElementById('main_text').innerText = "HE'S UNCONCIOUS! TAKE HIS MONEY BEFORE HE WAKES UP!"
+					click_modifier = 100
+					lucky_in_use = true
+					screamable = false
+					document.getElementById("scream").innerText = "Aaaaaahh-"
+					document.body.style.backgroundColor = `rgb(255, 215, 0)`;
+					await delay(10000)
+					document.getElementById('main_text').innerText = 'I need to punch this dude and take his money!'
+					click_modifier = 1
+					lucky_in_use = false
+					screamable = true
+					document.getElementById("scream").innerText = "Huh? Where am I? What happened?"
+					updateBG()
+				}
+				else {
+					if (Math.random() > 0.2) {
+						document.getElementById('main_text').innerText = "HE FELL INTO A COMA! TAKE HIS MONEY BEFORE HE WAKES UP!"
+						click_modifier = 1000
+					}
+					else {
+						document.getElementById('main_text').innerText = "HE FUCKING DIED! TAKE HIS MONEY BEFORE HE RESURRECTS!"
+						click_modifier = 10000
+					}
+				}
+			}
+		}
+		
+		
+		function delay(ms) {
+			return new Promise(resolve => setTimeout(resolve, ms));
+		}
+		
+		function scream() {
+			if (screamable == true) {
+				let what_scream
+				let scream_number = Math.random()
+				if (scream_number < 0.1) {
+					what_scream = "Ow!"
+				}
+				else if (scream_number < 0.2) {
+					what_scream = "Hey!"
+				}
+				else if (scream_number < 0.3) {
+					what_scream = "Stop!"
+				}
+				else if (scream_number < 0.4) {
+					what_scream = "My Money!"
+				}
+				else if (scream_number < 0.5) {
+					what_scream = "I need my Money!"
+				}
+				else if (scream_number < 0.6) {
+					what_scream = "Please!"
+				}
+				else if (scream_number < 0.7) {
+					what_scream = "This hurts!"
+				}
+				else if (scream_number < 0.8) {
+					what_scream = "Please Stop!"
+				}
+				else if (scream_number < 0.9) {
+					what_scream = "Don't!"
+				}
+				else {
+					what_scream = "Ouch!"
+				}
+				
+				
+				document.getElementById("scream").innerText = what_scream
+			}
+		}
+		
+		async function turn_red() {
+			redness += 10
+			if (redness > 50) redness = 50;
+			document.getElementById("button").style.filter = `sepia(1) saturate(10) hue-rotate(-50deg) brightness(${100 + redness / 2}%)`;
+			await delay(100)
+			document.getElementById("button").style.filter = `none`;
+		}
+		
+		function play() {
+			if (screamable = true) {
+				var audio = document.getElementById("audio");
+				var clone = audio.cloneNode();
+				clone.playbackRate = 0.9 + Math.random() * 3;
+				clone.play();
+			}
+		 }
     </script>
 </body>
 </html>
