@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>Taschenrechner</title>
+    <style>
+        body {
+            max-width: fit-content;
+            max-height: fit-content;
+            margin: auto;
+            margin-top: 10em;
+            display: grid;
+            grid-template-columns: repeat(4, 3em);
+            grid-template-rows: repeat(5, 3em);
+            gap: 0.5em;
+            background-image: url("images/calcbg.jpg");
+            background-size: 100%;
+        }
+
+        output {
+            border: 2px solid #c4c4c4;
+            border-radius: 0.2em;
+            width: 100%;
+            height: 100%;
+            display: block;
+            grid-column: span 4;
+            text-align: right;
+            padding: 0.4em;
+            font-family: "Courier New", monospace;
+            font-size: 1.2em;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+        
+        button {
+            border: 2px solid #c4c4c4;
+            font-size: 1em;
+        }
+        button:hover { background-color: #ffffff; }
+        button:active { background-color: #adbbff; }
+    </style>
+</head>
+<body>
+    <output id="output"></output>
+    <button type="button" class="number">1</button>
+    <button type="button" class="number">2</button>
+    <button type="button" class="number">3</button>
+    <button type="button" class="number">4</button>
+    <button type="button" class="number">5</button>
+    <button type="button" class="number">6</button>
+    <button type="button" class="number">7</button>
+    <button type="button" class="number">8</button>
+    <button type="button" class="number">9</button>
+    <button type="button" class="number">0</button>
+    <button type="button" class="operator">+</button>
+    <button type="button" class="operator">-</button>
+    <button type="button" class="operator">*</button>
+    <button type="button" class="operator">/</button>
+    <button type="button" id="dot">.</button>
+    <button type="button" id="btnCalculate">=</button>
+
+    <script>
+        let calc = "";
+        let displayEl;
+
+        const operators = "+-*/";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            displayEl = document.querySelector("#output");
+
+            const numberButtons = document.querySelectorAll(".number");
+            const operatorButtons = document.querySelectorAll(".operator");
+            const calculateButton = document.querySelector("#btnCalculate");
+            const dotbutton = document.querySelector("#dot")
+
+            numberButtons.forEach(btn => {
+                btn.addEventListener("click", () => appendChar(btn.textContent));
+            });
+
+            operatorButtons.forEach(btn => {
+                btn.addEventListener("click", () => appendChar(btn.textContent));
+            });
+
+            calculateButton.addEventListener("click", doCalculate);
+            dotbutton.addEventListener("click", () => appendChar("."));
+
+            document.addEventListener("keydown", handleKey);
+
+            updateDisplay();
+        });
+
+        function updateDisplay() {
+            displayEl.innerText = calc || "0";
+            //Secret
+            if (displayEl.innerText === "-1312667+9080443") {
+                window.location.href = "youfoundthecode.html";
+            }
+        }
+
+        function appendChar(ch) {
+            if (calc === "Fehler") {
+                calc = ch;
+                updateDisplay()
+                return;
+            }
+            if (ch === ".") {
+                // NUR EIN PUNKT
+                // Letzten Operator finden
+                const lastOp = Math.max(
+                    calc.lastIndexOf("+"),
+                    calc.lastIndexOf("-"),
+                    calc.lastIndexOf("*"),
+                    calc.lastIndexOf("/")
+                );
+                const currentNumber = calc.slice(lastOp + 1);
+                if (currentNumber.includes(".")) {
+                    return;
+                }
+                if (currentNumber === "") {
+                    // Wenn am Anfang . steht, auf 0.5 ändern
+                    calc += "0";
+                }
+                calc += ".";
+                updateDisplay();
+                return;
+            }
+
+            if (operators.includes(ch)) {
+                if (calc === "") {
+                    // NUR MINUS am anfang
+                    if (ch === "-") {
+                        calc = "-";
+                    } else {
+                        return;
+                    }
+                    updateDisplay();
+                    return;
+                }
+                const lastChar = calc.slice(-1);
+                if (operators.includes(lastChar)) {
+                    // Alten mit neuen Operator ersetzen
+                    if (!(calc.length === 1 && lastChar === "-")) {
+                        calc = calc.slice(0, -1) + ch;
+                    }
+                } else {
+                    calc += ch;
+                }
+                updateDisplay();
+                return;
+            }
+
+            if (/^[0-9]$/.test(ch)) {
+                calc += ch;
+                updateDisplay();
+                return;
+            }
+        }
+
+        function handleKey(event) {
+            if (event.key === "Backspace") {
+                event.preventDefault();
+                if (calc === "Fehler") {
+                    calc = ""
+                } else {
+                    calc = calc.slice(0, -1);
+                }
+                updateDisplay();
+                return;
+            }
+            if (event.key === "Enter") {
+                event.preventDefault();
+                doCalculate();
+                return;
+            }
+
+            // Keys an appendChar anfügen
+            const key = event.key;
+            if (/^[0-9]$/.test(key) || operators.includes(key) || key === ".") {
+                event.preventDefault();
+                appendChar(key);
+            }
+        }
+
+        function doCalculate() {
+            //falls nix dann nix
+            if (!calc) {
+                updateDisplay();
+                return;
+            }
+
+            // Operatoren am Schluss anihilieren
+            while (calc.length && operators.includes(calc.slice(-1))) {
+                calc = calc.slice(0, -1);
+            }
+
+            // Nur Zahlen und Dings erlauben
+            if (!/^[0-9+\-*/().\s]+$/.test(calc)) {
+                calc = "Fehler";
+                updateDisplay();
+                return;
+            }
+
+            try {
+                let result = eval(calc);
+
+                // Böse Ergebnisse
+                if (!isFinite(result) || Number.isNaN(result)) {
+                    calc = "Fehler";
+                    updateDisplay();
+                    return;
+                }
+
+                // 12 Dezimalstellen
+                if (Math.abs(result - Math.round(result)) > 1e-12) {
+                    result = parseFloat(result.toFixed(12));
+                } else {
+                    result = Math.round(result);
+                }
+
+                // In String umwandeln
+                calc = String(result);
+                updateDisplay();
+            
+            // Falls nix geht, Fehler
+            } catch (e) {
+                calc = "Fehler";
+                updateDisplay();
+            }
+        }
+    </script>
+</body>
+</html>
