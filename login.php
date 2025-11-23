@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
 
-    <button type="submit">Login</button>
+    <button type="submit" class="greenbutton">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
