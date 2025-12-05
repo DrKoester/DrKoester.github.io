@@ -16,6 +16,8 @@ if (empty($_SESSION["eingeloggt"])) {
     <head>
         <meta charset="UTF-8" />
         <title>title</title>
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="darkmode.js" defer></script>
     </head>
     <body>
 

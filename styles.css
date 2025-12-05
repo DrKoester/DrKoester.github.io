@@ -1,15 +1,39 @@
+:root {
+  --base-color: white;
+  --text-color: black;
+  --base-variant: rgb(218, 218, 218);
+  --char-color: blue;
+
+}
+
+
+.darkmode {
+  --base-color: black;
+  --text-color: white;
+  --base-variant: rgb(26, 26, 26);
+  --char-color: gray;
+}
+
+body {
+  background-color: var(--base-color);
+}
+
 h1, h2, h3 {
    font-family: Helvetica, sans-serif;
+   color: var(--text-color);
 }
+
+
 
 p, ul, ol, li, th, tr, td, label {
    font-family: Roboto, sans-serif;
+   color: var(--text-color);
 }
 
 .infobox {
   font-family: Arial, sans-serif;
-  border: 1px solid #a2a9b1;
-  background-color: #f8f9fa;
+  border: 1px solid var(--base-variant);
+  background-color: var(--base-color);
   border-collapse: collapse;
   width: 300px;
   font-size: 90%;
@@ -19,8 +43,8 @@ p, ul, ol, li, th, tr, td, label {
 .infobox caption {
   font-weight: bold;
   font-size: 1.1em;
-  background-color: #dbe2e8;
-  border: 1px solid #a2a9b1;
+  background-color: var(--base-color);
+  border: 1px solid var(--base-variant);
   border-bottom: none;
   padding: 0.4em;
   text-align: center;
@@ -28,24 +52,24 @@ p, ul, ol, li, th, tr, td, label {
 
 .infobox th,
 .infobox td {
-  border: 1px solid #a2a9b1;
+  border: 1px solid var(--base-variant);
   padding: 4px 6px;
   vertical-align: top;
 }
 
 .infobox th {
-  background-color: #eaecf0;
+  background-color: var(--base-color);
   text-align: left;
   font-weight: bold;
   width: 40%;
 }
 
 .infobox td {
-  background-color: #ffffff;
+  background-color: var(--base-color);
 }
 
 .infobox tr:nth-child(even) td {
-  background-color: #f8f9fa;
+  background-color: var(--base-variant);
 }
 
 .infobox img {
@@ -59,19 +83,30 @@ p, ul, ol, li, th, tr, td, label {
   text-align: center;
   font-size: 1.2em;
   font-weight: bold;
-  background-color: #dbe2e8;
+  background-color: var(--base-variant);
   padding: 6px;
 }
 
 .comic_body {
-	background-color: lightblue;
+	background-color: var(--char-color);
 	padding-left: 100px;
 	padding-right: 100px;
 }
 
+.imgtable {
+  display: flex;
+  
+}
+
+.comicimage {
+  width: 800px;
+  padding: 50px;
+  margin: auto;
+}
+
 
 form {
-border: 3px solid #f1f1f1;
+border: 3px solid var(--base-variant);
 }
 
 /* Full-width inputs */
@@ -80,13 +115,13 @@ width: 100%;
 padding: 12px 20px;
 margin: 8px 0;
 display: inline-block;
-border: 1px solid #ccc;
+border: 1px solid var(--base-variant);
 box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
 button {
-color: white;
+color: var(--base-color);
 padding: 14px 20px;
 margin: 8px 0;
 border: none;
@@ -145,4 +180,53 @@ span.psw {
 .cancelbtn {
     width: 100%;
 }
+}
+
+
+
+.logo_list {
+  margin:0 auto;
+  background-color: var(--base-variant);
+  margin-bottom: 50px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.logo_list > a > img, .logo_list > img {
+  border-radius: 20%;
+  width: 200px;
+  margin-top: 20px;
+}
+
+
+
+#theme_switch {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--base-variant);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+#theme_switch svg {
+  fill: var(--base-color);
+}
+
+#theme_switch svg:last-child {
+  display: none;
+}
+
+.darkmode #theme_switch svg:first-child {
+  display: none;
+}
+
+.darkmode #theme_switch svg:last-child {
+  display: block;
 }

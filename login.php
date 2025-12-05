@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Login - Frigidipedia</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="darkmode.js" defer></script>
 </head>
 <body>
     
