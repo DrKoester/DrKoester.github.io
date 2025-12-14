@@ -1,0 +1,8 @@
+Name: 
+Gender: 
+Ticked:   
+Voted: 
+Skin Tone: #000000
+Birthday: 
+Phone: 5000000000
+Email: 

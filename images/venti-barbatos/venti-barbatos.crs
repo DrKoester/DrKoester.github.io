@@ -1,0 +1,45 @@
+﻿[Arrow]
+Path=Venti Normal Select.cur
+
+[Help]
+Path=Venti Help.cur
+
+[AppStarting]
+Path=Venti Working in Background.cur
+
+[Wait]
+Path=Venti Busy.cur
+
+[Crosshair]
+Path=Venti Precision Select.cur
+
+[IBeam]
+Path=Venti Text Select.cur
+
+[NWPen]
+Path=Venti Handwriting.cur
+
+[No]
+Path=Venti Unavailable.cur
+
+[SizeNS]
+Path=Venti Vertical Resize.cur
+
+[SizeWE]
+Path=Venti Horizontal Resize.cur
+
+[SizeNWSE]
+Path=Venti Diagonal Resize 1.cur
+
+[SizeNESW]
+Path=Venti Diagonal Resize 2.cur
+
+[SizeAll]
+Path=Venti Move.cur
+
+[UpArrow]
+Path=Venti Alternate Select.cur
+
+[Hand]
+Path=Venti Link Select.cur
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>Die Uhrzeit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="yaythisisdaid">
+    <p id="time_changing_button" class="date"></p>
+    <script>
+      function updateTime() {
+        const d = new Date();
+
+        let hours = String(d.getHours()).padStart(2, "0");
+        let minutes = String(d.getMinutes()).padStart(2, "0");
+        let seconds = String(d.getSeconds()).padStart(2, "0");
+
+        const formatted = `${hours}:${minutes}:${seconds}`;
+
+        let thetime = document.getElementById("time_changing_button")
+        thetime.innerText = formatted;
+
+        let background = document.getElementById("yaythisisdaid")
+
+        let time_img
+
+        if (hours < 5) {
+            time_img = "datebodynight"
+        }
+        else if (hours < 10) {
+            time_img = "datebodymorning"
+        }
+        else if (hours < 14) {
+            //17
+            time_img = "datebodyday"
+        }
+        else if (hours < 22) {
+            time_img = "datebodysunset"
+        }
+        else {
+            time_img = "datebodynight"
+        }
+
+        background.className = time_img;
+
+
+      }
+
+
+      setInterval(updateTime, 1000);
+      updateTime(); // run immediately on load
+
+    </script>
+</body>
+</html>

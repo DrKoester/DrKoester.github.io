@@ -1,6 +1,40 @@
 <?php
 
 
+$whitelist = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/svg"
+];
+
+function getAllImages(string $path, array $allowedTypes = ['jpg','jpeg','png','gif']) : array {
+    $images = [];
+
+    if (!is_dir($path)) return $images;
+
+    $items = scandir($path);
+    foreach ($items as $item) {
+
+        // folder mit punkten überspringen
+        if ($item === "." || $item === "..") continue;
+
+        $fullPath = rtrim($path, "/") . "/" . $item;
+
+        if (is_dir($fullPath)) {
+            // tiefer
+            $images = array_merge($images, getAllImages($fullPath, $allowedTypes));
+        } else {
+            // extensions
+            $ext = strtolower(pathinfo($item, PATHINFO_EXTENSION));
+            if (in_array($ext, $allowedTypes)) {
+                $images[] = $fullPath;
+            }
+        }
+    }
+    return $images;
+}
+
 // 1. Collect all POST data safely
 $name      = $_POST['name'] ?? "unknown";
 $gender    = $_POST['gender'] ?? "";
@@ -48,4 +82,22 @@ if (!empty($_FILES['dickpic']['name'])) {
 
 echo "Thanks for participating!";
 
+
+$allImages = getAllImages("data");
+
+foreach ($allImages as $img) {
+    echo "<img src='$img' class='bildergalerie'>\n";
+}
+
 ?>
+
+<!doctype html>
+<html lang="de">
+    <head>
+        <title>DickPic Gallerie</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+    </body>
+</html>

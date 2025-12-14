@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -13,13 +13,13 @@
         
         <!-- name  -->
         <label for="name">Please enter your name:</label>
-        <input type="text" class="form-control" 
+        <input type="text" class="shortinput" 
                 id="name" placeholder="NAME" 
                 name="name" value="" /><br>
         
         <!-- email  -->
         <label for="email">Please enter your e-mail:</label>
-        <input type="email" class="form-control" 
+        <input type="email" class="shortinput" 
                 id="email" placeholder="EMAIL" 
                 name="email"
             value="" /><br>
@@ -75,7 +75,7 @@
         <input type="file" id="dickpic" name="dickpic">
         <br>
 
-        <button class="btn btn-primary send-button" 
+        <button class="send_button" 
                 id="submit" type="submit" value="SEND">
             <i class="fa fa-paper-plane"></i>
             <span class="send-text">SEND</span>

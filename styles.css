@@ -107,16 +107,22 @@ p, ul, ol, li, th, tr, td, label {
 
 form {
 border: 3px solid var(--base-variant);
+padding-left: 3em;
+padding-top: 3em;
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
 width: 100%;
 padding: 12px 20px;
 margin: 8px 0;
 display: inline-block;
 border: 1px solid var(--base-variant);
 box-sizing: border-box;
+}
+
+input.shortinput {
+  width: 30em;
 }
 
 /* Set a style for all buttons */
@@ -229,4 +235,54 @@ span.psw {
 
 .darkmode #theme_switch svg:last-child {
   display: block;
+}
+
+
+.bildergalerie {
+  height: 20em;
+  border: 1px solid gray;
+  background-color: #eee;
+  border-radius: 0.2em;
+  padding: 10%;
+  display: flex;
+}
+
+.send_button {
+  width: 30em;
+  color: white;
+  background-color: #04AA6D;
+}
+
+body.datebodynight {
+  background-image: url('images/nacht.webp');
+}
+
+body.datebodyday {
+  background-image: url('images/day.jpg');
+}
+
+body.datebodymorning {
+  background-image: url('images/morning.jpg');
+}
+
+body.datebodysunset {
+  background-image: url('images/sunset.jpg');
+}
+
+#yaythisisdaid {
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+p.date {
+  text-align: center;
+  padding-top: 3em;
+  text-shadow:
+        -3px -3px 0 black,
+         3px -3px 0 black,
+        -3px  3px 0 black,
+         3px  3px 0 black;
+  color: white;
+  font-weight: bold;
+  font-size: 500%;
 }
