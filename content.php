@@ -67,7 +67,7 @@ $info .= "Email: $email\n";
 
 file_put_contents("$folder/info.txt", $info);
 
-// 4. Upload file → saved in SAME folder
+// 4. Upload file > saved in SAME folder
 if (!empty($_FILES['dickpic']['name'])) {
 
     $fileName   = basename($_FILES['dickpic']['name']);

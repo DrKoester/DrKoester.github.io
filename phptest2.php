@@ -42,28 +42,9 @@
         <input type="radio" name="gender" id="gender2" value="Female">
         <label for="gender2">Female</label><br>
         <input type="radio" name="gender" id="gender3" value="Other (Not Real)">
-        <label for="gender3">Other (not real)</label>
+        <label for="gender3">Other</label>
         <br>
 
-        <!-- murica!!! -->
-
-        <p>Please tick correct statements:</p>
-        <input type="checkbox" name="intr1" value="livinginmurica">
-        <label for="intr1">I was born in 'Murica</label><br>
-
-        <input type="checkbox" name="intr2" value="likingothers">
-        <label for="intr2">I like people born outside 'Murica</label><br>
-
-        <input type="checkbox" name="intr3" value="ancestors">
-        <label for="intr3">I have Ancestors less than 3 generations back who weren't born in 'Murica</label>
-        <br>
-
-        <!-- vote -->
-        <p>Who did you last vote for?</p>
-        <input type="radio" name="vote" id="v1" value="harris...">
-        <label for="v1">harris...</label><br>
-        <input type="radio" name="vote" id="v2" value="TRUMP!!!">
-        <label for="v2">TRUMP!!!</label><br>
 
         <!-- race -->
         <label for="favcolor">Please select your skin tone:</label>
@@ -71,7 +52,7 @@
         <br>
 
         <!-- dick pic -->
-        <label for="dickpic">Please attach <s>a photograph of your phallus:</s> an image of your choice:</label>
+        <label for="dickpic">Please attach an image of yourself so we can fact check:</label>
         <input type="file" id="dickpic" name="dickpic">
         <br>
 

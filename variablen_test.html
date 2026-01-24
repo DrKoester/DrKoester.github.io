@@ -8,12 +8,12 @@
 </head>
 <body class="clicker">
 	
-	<h1 id="main_text">I need to punch this dude and take his money!</h1>
+	<h1 id="main_text">I need to click this cookie!</h1>
 	<audio id="audio" src="audio/homeless.mp3"></audio>
     
-	<p>Dollars: <span id="clicks">0.0</span></p>
-	<img src="images/homeless.png" class="main_button" id="button" type="submit" name="button">
-	<p id="scream">Aaaah, what a nice day to be homeless...</p>
+	<p>Cookies: <span id="clicks">0.0</span></p>
+	<img src="images/cookie2.png" class="main_button" id="button" type="submit" name="button">
+	<p id="scream">Aaaah, what a nice day to be a cookie....</p>
 	
 	
 	
@@ -25,7 +25,7 @@
 		</tr>
 		<tr>
 			<td>Hitmen: <span id="clickers">0</span></td>
-			<td>Hire a hitman to help you punch homeless dudes: <span id="clickers_prize">30.0</span></td>
+			<td>Hire a hitman to help you punch cookies: <span id="clickers_prize">30.0</span></td>
 			<td><input id="clickerbutton" type="submit" name="clicker_button" value="HIRE"/></td>
 		</tr>
 		<tr>
@@ -34,13 +34,13 @@
 			<td><input id="clickers_power_button" type="submit" name="clicker_power_button" value="UPGRADE"/></td>
 		</tr>
 		<tr>
-			<td>Metal detectors: <span id="clickey_mouses">0</span></td>
-			<td>Order a metal detector from Amazon: <span id="clickey_mouses_prize">6000.0</span></td>
+			<td>Sauce: <span id="clickey_mouses">0</span></td>
+			<td>Buy sauce for your cookies: <span id="clickey_mouses_prize">6000.0</span></td>
 			<td><input id="clickey_mouses_button" type="submit" name="clickey_mouse_button" value="ORDER"/></td>
 		</tr>
 		<tr>
-			<td>Metal detector sensitivity: <span id="clickey_mouses_power">1</span></td>
-			<td>Make your detectors more sensitive to the money of homeless dudes: <span id="clickey_mouses_power_prize">60000.0</span></td>
+			<td>Sauce hotness: <span id="clickey_mouses_power">1</span></td>
+			<td>Make your detectors hotter!: <span id="clickey_mouses_power_prize">60000.0</span></td>
 			<td><input id="clickey_mouses_power_button" type="submit" name="clickey_mouse_power_button" value="CHANGE SENSITIVITY"/></td>
 		</tr>
 		<tr>
@@ -54,20 +54,20 @@
 			<td><input id="books_power_button" type="submit" name="book_power_button" value="BUY"/></td>
 		</tr>
 		<tr>
-			<td>Cartels owned: <span id="cartels">0</span></td>
-			<td>Buy a Cartel in Mexico: <span id="cartels_prize">90000.0</span></td>
+			<td>Factories built: <span id="cartels">0</span></td>
+			<td>Open a factory in Mexico: <span id="cartels_prize">90000.0</span></td>
 			<td><input id="cartels_button" type="submit" name="cartels_button" value="BUY"/></td>
 		</tr>
 		<tr>
-			<td>Cartel Power: <span id="cartels_power">1</span></td>
-			<td>Sell harder drugs: <span id="cartels_power_prize">900000.0</span></td>
+			<td>Factory Power: <span id="cartels_power">1</span></td>
+			<td>Pay minimum wage to get more money: <span id="cartels_power_prize">900000.0</span></td>
 			<td><input id="cartels_power_button" type="submit" name="cartels_power_button" value="HARDER DRUGS"/></td>
 		</tr>
 	</table>
 	
 
     <script>
-		window.alert("Hey, look at this homeless dude. I need to punch him and take his money!");
+		window.alert("Hey, look at this cookie. I need to punch it!");
         var clicks = 0;
 		var click_power = 1;
 		var click_power_prize = 10;
@@ -219,14 +219,14 @@
 		async function lucky_number() {
 			if (Math.random() < 0.001) {
 				if  (lucky_in_use == false) {
-					document.getElementById('main_text').innerText = "HE'S UNCONCIOUS! TAKE HIS MONEY BEFORE HE WAKES UP!"
+					document.getElementById('main_text').innerText = "CLICK FRENZY! TAKE THE COOKIES BEFORE IT ENDS!"
 					click_modifier = 100
 					lucky_in_use = true
 					screamable = false
 					document.getElementById("scream").innerText = "Aaaaaahh-"
 					document.body.style.backgroundColor = `rgb(255, 215, 0)`;
 					await delay(10000)
-					document.getElementById('main_text').innerText = 'I need to punch this dude and take his money!'
+					document.getElementById('main_text').innerText = 'I need to punch this cookie!'
 					click_modifier = 1
 					lucky_in_use = false
 					screamable = true
@@ -235,11 +235,11 @@
 				}
 				else {
 					if (Math.random() > 0.2) {
-						document.getElementById('main_text').innerText = "HE FELL INTO A COMA! TAKE HIS MONEY BEFORE HE WAKES UP!"
+						document.getElementById('main_text').innerText = "EXTRA FRENZY!!!!"
 						click_modifier = 1000
 					}
 					else {
-						document.getElementById('main_text').innerText = "HE FUCKING DIED! TAKE HIS MONEY BEFORE HE RESURRECTS!"
+						document.getElementById('main_text').innerText = "EXTRA EXTRA FRENZY!!!"
 						click_modifier = 10000
 					}
 				}
@@ -265,10 +265,10 @@
 					what_scream = "Stop!"
 				}
 				else if (scream_number < 0.4) {
-					what_scream = "My Money!"
+					what_scream = "My bones!"
 				}
 				else if (scream_number < 0.5) {
-					what_scream = "I need my Money!"
+					what_scream = "It hurts!"
 				}
 				else if (scream_number < 0.6) {
 					what_scream = "Please!"

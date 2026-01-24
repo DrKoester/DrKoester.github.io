@@ -286,3 +286,23 @@ p.date {
   font-weight: bold;
   font-size: 500%;
 }
+
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+}
